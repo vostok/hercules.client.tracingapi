@@ -1,0 +1,17 @@
+notests *default:
+  build:
+    target: Vostok.Hercules.Client.TracingApi.sln
+    configuration: NoTests
+    tool:
+      name: dotnet
+
+  install:
+    - Vostok.Hercules.Client.TracingApi/bin/Release/netstandard2.0/Vostok.Hercules.Client.TracingApi.dll
+
+  deps:
+    - vostok.devtools
+
+full-build > notests:
+  build:
+    target: Vostok.Hercules.Client.TracingApi.sln
+    configuration: Release
