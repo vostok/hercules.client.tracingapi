@@ -9,6 +9,8 @@ notests *default:
     - Vostok.Hercules.Client.TracingApi/bin/Release/netstandard2.0/Vostok.Hercules.Client.TracingApi.dll
 
   deps:
+    - vostok.commons.time
+    - vostok.clusterclient.transport
     - vostok.hercules.client.abstractions
     - vostok.tracing.abstractions
     - vostok.clusterclient.core

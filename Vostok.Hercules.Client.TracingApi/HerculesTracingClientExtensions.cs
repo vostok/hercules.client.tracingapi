@@ -43,6 +43,9 @@ namespace Vostok.Hercules.Client.TracingApi
                 foreach (var @event in readPayload.Spans)
                     yield return @event;
 
+                if (readPayload.Next.State == null)
+                    break;
+
                 state = readPayload.Next;
             }
         }

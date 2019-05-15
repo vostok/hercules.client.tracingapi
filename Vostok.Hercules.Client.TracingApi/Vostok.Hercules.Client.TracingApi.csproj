@@ -22,6 +22,9 @@
     <RepositoryUrl>https://github.com/vostok/hercules.client.tracingapi</RepositoryUrl>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\..\vostok.commons.time\Vostok.Commons.Time\EpochHelper.cs" Link="Commons\EpochHelper.cs" />
+  </ItemGroup>  
+  <ItemGroup>
     <Reference Include="Vostok.ClusterClient.Core">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\vostok.clusterclient.core\Vostok.ClusterClient.Core\bin\Release\netstandard2.0\Vostok.ClusterClient.Core.dll</HintPath>
@@ -38,5 +41,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\vostok.hercules.client.abstractions\Vostok.Hercules.Client.Abstractions\bin\Release\netstandard2.0\Vostok.Hercules.Client.Abstractions.dll</HintPath>
     </Reference>
+    <Reference Include="Vostok.ClusterClient.Transport">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\vostok.clusterclient.transport\Vostok.ClusterClient.Transport\bin\Release\netstandard2.0\Vostok.ClusterClient.Transport.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
   </ItemGroup>
 </Project>
