@@ -15,15 +15,14 @@ namespace Vostok.Hercules.Client.TracingApi
     public class HerculesTracingClient : IHerculesTracingClient
     {
         private const string ServiceName = "Hercules.TracingApi";
-        
+
         private readonly ILog log;
         private IClusterClient client;
-        private ResponseAnalyzer responseAnalyzer;
 
         public HerculesTracingClient(HerculesTracingClientSettings settings, ILog log)
         {
             this.log = log.ForContext<HerculesTracingClient>();
-            
+
             client = new ClusterClient(
                 log,
                 configuration =>
@@ -34,10 +33,8 @@ namespace Vostok.Hercules.Client.TracingApi
 
                     settings.AdditionalSetup?.Invoke(configuration);
                 });
-            
-            responseAnalyzer = new ResponseAnalyzer();
         }
-        
+
         public async Task<ReadTraceResult> ReadAsync(TraceReadQuery query, TimeSpan timeout, CancellationToken cancellationToken = default)
         {
             try
@@ -45,8 +42,8 @@ namespace Vostok.Hercules.Client.TracingApi
                 var request = Request.Get("/trace").WithTraceReadQuery(query);
                 var result = await client.SendAsync(request, timeout, cancellationToken: cancellationToken).ConfigureAwait(false);
 
-                var status = responseAnalyzer.Analyze(result.Response, out var errorMessage);
-                
+                var status = ResponseAnalyzer.Analyze(result.Response, out var errorMessage);
+
                 var payload = default(ReadTracePayload);
                 if (status == HerculesStatus.Success)
                     payload = CreateReadTracePayload(JsonConvert.DeserializeObject<TraceResponseDto>(result.Response.Content.ToString()));

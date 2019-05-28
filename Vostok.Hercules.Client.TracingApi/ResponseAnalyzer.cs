@@ -3,11 +3,11 @@ using Vostok.Hercules.Client.Abstractions.Results;
 
 namespace Vostok.Hercules.Client.TracingApi
 {
-    internal class ResponseAnalyzer
+    internal static class ResponseAnalyzer
     {
         private const int MaximumErrorMessageLength = 250;
 
-        public HerculesStatus Analyze(Response response, out string errorMessage)
+        public static HerculesStatus Analyze(Response response, out string errorMessage)
         {
             var status = GetStatus(response);
 
