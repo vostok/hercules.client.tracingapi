@@ -14,9 +14,9 @@ namespace Vostok.Hercules.Client.TracingApi
             this IHerculesTracingClient client,
             TraceReadQuery query,
             TimeSpan timeout,
-            CancellationToken cancellationToken=default) =>
+            CancellationToken cancellationToken = default) =>
             client.ReadAsync(query, timeout, cancellationToken).GetAwaiter().GetResult();
-        
+
         [NotNull]
         public static IEnumerable<ISpan> Scan(
             [NotNull] this IHerculesTracingClient client,
@@ -39,7 +39,7 @@ namespace Vostok.Hercules.Client.TracingApi
 
                 if (readPayload.Spans.Count == 0)
                     break;
-                
+
                 foreach (var @event in readPayload.Spans)
                     yield return @event;
 

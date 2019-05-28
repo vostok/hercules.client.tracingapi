@@ -10,6 +10,8 @@ namespace Vostok.Hercules.Client.TracingApi
     {
         [NotNull]
         Task<ReadTraceResult> ReadAsync(
-            TraceReadQuery query, TimeSpan timeout, CancellationToken cancellationToken=default);
+            TraceReadQuery query,
+            TimeSpan timeout,
+            CancellationToken cancellationToken = default);
     }
 }

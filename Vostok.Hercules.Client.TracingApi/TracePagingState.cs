@@ -6,13 +6,13 @@ namespace Vostok.Hercules.Client.TracingApi
     public class TracePagingState
     {
         public static readonly TracePagingState Empty = new TracePagingState(null);
-        
-        [CanBeNull]
-        public string State { get; }
 
         public TracePagingState(string state)
         {
             State = state;
         }
+
+        [CanBeNull]
+        public string State { get; }
     }
 }

@@ -6,7 +6,7 @@ namespace Vostok.Hercules.Client.TracingApi.Dto
     {
         [JsonProperty("result")]
         public SpanDto[] Result;
-        
+
         [JsonProperty("pagingState")]
         public string PagingState;
     }
