@@ -20,10 +20,10 @@ namespace Vostok.Hercules.Client.TracingApi.Dto
             };
         }
 
-        private static DateTimeOffset CreateDateTimeOffset(long utcTimestamp, int utcOffset)
+        private static DateTimeOffset CreateDateTimeOffset(long utcTimestamp, long utcOffset)
         {
-            var dateTime = EpochHelper.FromUnixTimeMilliseconds(utcTimestamp);
-            var offset = TimeSpan.FromSeconds(utcOffset);
+            var dateTime = EpochHelper.FromUnixTimeUtcTicks(utcTimestamp);
+            var offset = TimeSpan.FromTicks(utcOffset);
 
             return new DateTimeOffset(DateTime.SpecifyKind(dateTime + offset, DateTimeKind.Unspecified), offset);
         }
