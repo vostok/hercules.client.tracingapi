@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
@@ -36,7 +37,7 @@ namespace Vostok.Hercules.Client.TracingApi
                 });
         }
 
-        public async Task<HerculesResult<Guid[]>> GetTraceIdsAsync(string tracePrefix, TimeSpan timeout)
+        public async Task<HerculesResult<IList<Guid>>> GetTraceIdsAsync(string tracePrefix, TimeSpan timeout)
         {
             try
             {
@@ -48,17 +49,17 @@ namespace Vostok.Hercules.Client.TracingApi
 
                 var payload = status == HerculesStatus.Success
                     ? JsonConvert
-                        .DeserializeObject<string[]>(result.Response.Content.ToString())
+                        .DeserializeObject<List<string>>(result.Response.Content.ToString())
                         .Select(Guid.Parse)
-                        .ToArray()
+                        .ToList()
                     : null;
 
-                return new HerculesResult<Guid[]>(status, payload, errorMessage);
+                return new HerculesResult<IList<Guid>>(status, payload, errorMessage);
             }
             catch (Exception error)
             {
                 log.Error(error);
-                return new HerculesResult<Guid[]>(HerculesStatus.UnknownError, null, error.Message);
+                return new HerculesResult<IList<Guid>>(HerculesStatus.UnknownError, null, error.Message);
             }
         }
     }
