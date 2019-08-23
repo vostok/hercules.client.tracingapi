@@ -17,7 +17,7 @@ namespace Vostok.Hercules.Client.TracingApi
         }
 
         /// <summary>
-        /// <para>An <see cref="IClusterProvider"/> implementation that provides replicas of Hercules management API service.</para>
+        /// <para>An <see cref="IClusterProvider"/> implementation that provides replicas of Hercules tracing API service.</para>
         /// </summary>
         [NotNull]
         public IClusterProvider Cluster { get; }

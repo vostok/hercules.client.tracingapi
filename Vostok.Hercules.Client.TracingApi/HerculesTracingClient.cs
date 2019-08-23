@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
 using Newtonsoft.Json;
 using Vostok.Clusterclient.Core;
 using Vostok.Clusterclient.Core.Model;
@@ -12,6 +13,7 @@ using Vostok.Logging.Abstractions;
 
 namespace Vostok.Hercules.Client.TracingApi
 {
+    [PublicAPI]
     public class HerculesTracingClient : IHerculesTracingClient
     {
         private const string ServiceName = "Hercules.TracingApi";
@@ -19,9 +21,10 @@ namespace Vostok.Hercules.Client.TracingApi
         private readonly ILog log;
         private IClusterClient client;
 
-        public HerculesTracingClient(HerculesTracingClientSettings settings, ILog log)
+        public HerculesTracingClient([NotNull] HerculesTracingClientSettings settings, [CanBeNull] ILog log)
         {
-            this.log = log.ForContext<HerculesTracingClient>();
+            settings = settings ?? throw new ArgumentNullException(nameof(settings));
+            this.log = log = (log ?? LogProvider.Get()).ForContext<HerculesTracingClient>();
 
             client = new ClusterClient(
                 log,

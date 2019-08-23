@@ -34,16 +34,16 @@ namespace Vostok.Hercules.Client.TracingApi.Tests
                 SpanId = Guid.Parse("7a99a678-def0-4567-abad-ba7fc38ffa13"),
                 ParentSpanId = Guid.Parse("abcdef12-acde-4675-9322-f96cc1234567"),
                 BeginTimestamp = new DateTimeOffset(2019, 4, 22, 13, 15, 33, 913, 5.Hours()),
-                EndTimestamp = new DateTimeOffset(2019, 4, 22, 13, 15, 34, 013,5.Hours()),
+                EndTimestamp = new DateTimeOffset(2019, 4, 22, 13, 15, 34, 013, 5.Hours()),
                 Annotations = new Dictionary<string, object>
                 {
                     ["SomeKey"] = "Some brilliant string"
                 }
             };
-            
+
             SpanDtoConverter.ConvertToSpan(spanDto).Should().BeEquivalentTo(expectedSpan);
         }
-        
+
         [Test]
         public void Should_convert_to_ISpan_correctly_when_parentSpanId_is_absent()
         {
@@ -66,13 +66,13 @@ namespace Vostok.Hercules.Client.TracingApi.Tests
                 TraceId = Guid.Parse("1a2b3c4d-9bec-40b0-839b-cc51e2abcdef"),
                 SpanId = Guid.Parse("7a99a678-def0-4567-abad-ba7fc38ffa13"),
                 BeginTimestamp = new DateTimeOffset(2019, 4, 22, 13, 15, 33, 913, 5.Hours()),
-                EndTimestamp = new DateTimeOffset(2019, 4, 22, 13, 15, 34, 013,5.Hours()),
+                EndTimestamp = new DateTimeOffset(2019, 4, 22, 13, 15, 34, 013, 5.Hours()),
                 Annotations = new Dictionary<string, object>
                 {
                     ["SomeKey"] = "Some brilliant string"
                 }
             };
-            
+
             SpanDtoConverter.ConvertToSpan(spanDto).Should().BeEquivalentTo(expectedSpan);
         }
     }

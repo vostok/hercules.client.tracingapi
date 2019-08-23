@@ -11,8 +11,8 @@ namespace Vostok.Hercules.Client.TracingApi
     {
         [NotNull]
         public static ReadTraceResult Read(
-            this IHerculesTracingClient client,
-            TraceReadQuery query,
+            [NotNull] this IHerculesTracingClient client,
+            [NotNull] TraceReadQuery query,
             TimeSpan timeout,
             CancellationToken cancellationToken = default) =>
             client.ReadAsync(query, timeout, cancellationToken).GetAwaiter().GetResult();

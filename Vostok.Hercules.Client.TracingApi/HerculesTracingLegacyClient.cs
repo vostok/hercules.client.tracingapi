@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
 using Newtonsoft.Json;
 using Vostok.Clusterclient.Core;
 using Vostok.Clusterclient.Core.Model;
@@ -10,6 +11,7 @@ using Vostok.Logging.Abstractions;
 
 namespace Vostok.Hercules.Client.TracingApi
 {
+    [PublicAPI]
     public class HerculesTracingLegacyClient : IHerculesTracingLegacyClient
     {
         private const string ServiceName = "Hercules.LegacyTracingApi";
@@ -17,9 +19,10 @@ namespace Vostok.Hercules.Client.TracingApi
         private readonly ILog log;
         private readonly IClusterClient client;
 
-        public HerculesTracingLegacyClient(HerculesTracingLegacyClientSettings settings, ILog log)
+        public HerculesTracingLegacyClient([NotNull] HerculesTracingLegacyClientSettings settings, [CanBeNull] ILog log)
         {
-            this.log = log.ForContext<HerculesTracingLegacyClient>();
+            settings = settings ?? throw new ArgumentNullException(nameof(settings));
+            this.log = log = (log ?? LogProvider.Get()).ForContext<HerculesTracingClient>();
 
             client = new ClusterClient(
                 log,
@@ -38,7 +41,7 @@ namespace Vostok.Hercules.Client.TracingApi
             try
             {
                 var request = Request.Get("/tracing").WithAdditionalQueryParameter("prefix", tracePrefix);
-                
+
                 var result = await client.SendAsync(request, timeout).ConfigureAwait(false);
 
                 var status = ResponseAnalyzer.Analyze(result.Response, out var errorMessage);
@@ -49,7 +52,7 @@ namespace Vostok.Hercules.Client.TracingApi
                         .Select(Guid.Parse)
                         .ToArray()
                     : null;
-                
+
                 return new HerculesResult<Guid[]>(status, payload, errorMessage);
             }
             catch (Exception error)
