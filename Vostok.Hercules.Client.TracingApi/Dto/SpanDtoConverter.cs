@@ -1,6 +1,4 @@
 using System;
-using System.Linq;
-using Vostok.Commons.Time;
 using Vostok.Tracing.Abstractions;
 
 namespace Vostok.Hercules.Client.TracingApi.Dto
@@ -13,21 +11,11 @@ namespace Vostok.Hercules.Client.TracingApi.Dto
             {
                 TraceId = Guid.Parse(spanDto.TraceId),
                 SpanId = Guid.Parse(spanDto.SpanId),
-                ParentSpanId = spanDto.ParentSpanId != null ? Guid.Parse(spanDto.ParentSpanId) : default(Guid?),
-                BeginTimestamp = CreateDateTimeOffset(spanDto.BeginTimestampUtc, spanDto.BeginTimestampUtcOffset),
-                EndTimestamp = spanDto.EndTimestampUtc == 0
-                    ? (DateTimeOffset?)null
-                    : CreateDateTimeOffset(spanDto.EndTimestampUtc, spanDto.EndTimestampUtcOffset),
-                Annotations = spanDto.Annotations.ToDictionary(pair => pair.Key, pair => (object)pair.Value)
+                ParentSpanId = spanDto.ParentSpanId == null ? default(Guid?) : Guid.Parse(spanDto.ParentSpanId),
+                BeginTimestamp = spanDto.BeginTimestamp,
+                EndTimestamp = spanDto.EndTimestamp == null ? (DateTimeOffset?)null : spanDto.EndTimestamp,
+                Annotations = spanDto.Annotations
             };
-        }
-
-        private static DateTimeOffset CreateDateTimeOffset(long utcTimestamp, long utcOffset)
-        {
-            var dateTime = EpochHelper.FromUnixTimeUtcTicks(utcTimestamp);
-            var offset = TimeSpan.FromTicks(utcOffset);
-
-            return new DateTimeOffset(DateTime.SpecifyKind(dateTime + offset, DateTimeKind.Unspecified), offset);
         }
     }
 }
