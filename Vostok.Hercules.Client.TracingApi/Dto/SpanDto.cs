@@ -13,18 +13,12 @@ namespace Vostok.Hercules.Client.TracingApi.Dto
 
         [JsonProperty("parentSpanId")]
         public string ParentSpanId;
+		
+        [JsonProperty("beginTimestamp")]
+        public string BeginTimestamp;
 
-        [JsonProperty("beginTimestampUtc")]
-        public long BeginTimestampUtc;
-
-        [JsonProperty("beginTimestampUtcOffset")]
-        public long BeginTimestampUtcOffset;
-
-        [JsonProperty("endTimestampUtc")]
-        public long EndTimestampUtc;
-
-        [JsonProperty("endTimestampUtcOffset")]
-        public long EndTimestampUtcOffset;
+        [JsonProperty("endTimestamp")]
+        public string EndTimestamp;
 
         [JsonProperty("annotations")]
         public Dictionary<string, string> Annotations;

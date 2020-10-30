@@ -18,10 +18,8 @@ namespace Vostok.Hercules.Client.TracingApi.Tests
                 TraceId = "1a2b3c4d-9bec-40b0-839b-cc51e2abcdef",
                 SpanId = "7a99a678-def0-4567-abad-ba7fc38ffa13",
                 ParentSpanId = "abcdef12-acde-4675-9322-f96cc1234567",
-                BeginTimestampUtc = 1555920933913,
-                EndTimestampUtc = 1555920934013,
-                BeginTimestampUtcOffset = 18000,
-                EndTimestampUtcOffset = 18000,
+                BeginTimestamp = "2019-04-22T13:15:33.913000000+05:00",
+                EndTimestamp = "2019-04-22T13:15:34.013000000+05:00",
                 Annotations = new Dictionary<string, string>
                 {
                     ["SomeKey"] = "Some brilliant string"
@@ -51,10 +49,8 @@ namespace Vostok.Hercules.Client.TracingApi.Tests
             {
                 TraceId = "1a2b3c4d-9bec-40b0-839b-cc51e2abcdef",
                 SpanId = "7a99a678-def0-4567-abad-ba7fc38ffa13",
-                BeginTimestampUtc = 1555920933913,
-                EndTimestampUtc = 1555920934013,
-                BeginTimestampUtcOffset = 18000,
-                EndTimestampUtcOffset = 18000,
+                BeginTimestamp = "2019-04-22T13:15:33.913000000+05:00",
+                EndTimestamp = "2019-04-22T13:15:34.013000000+05:00",
                 Annotations = new Dictionary<string, string>
                 {
                     ["SomeKey"] = "Some brilliant string"
