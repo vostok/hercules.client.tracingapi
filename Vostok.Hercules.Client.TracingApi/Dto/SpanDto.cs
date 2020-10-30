@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
@@ -13,14 +14,14 @@ namespace Vostok.Hercules.Client.TracingApi.Dto
 
         [JsonProperty("parentSpanId")]
         public string ParentSpanId;
-		
+
         [JsonProperty("beginTimestamp")]
-        public string BeginTimestamp;
+        public DateTimeOffset BeginTimestamp;
 
         [JsonProperty("endTimestamp")]
-        public string EndTimestamp;
+        public DateTimeOffset EndTimestamp;
 
         [JsonProperty("annotations")]
-        public Dictionary<string, string> Annotations;
+        public Dictionary<string, object> Annotations;
     }
 }

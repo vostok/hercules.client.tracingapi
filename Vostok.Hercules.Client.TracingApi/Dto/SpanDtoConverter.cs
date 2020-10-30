@@ -1,6 +1,4 @@
 using System;
-using System.Linq;
-using Vostok.Commons.Time;
 using Vostok.Tracing.Abstractions;
 
 namespace Vostok.Hercules.Client.TracingApi.Dto
@@ -13,12 +11,10 @@ namespace Vostok.Hercules.Client.TracingApi.Dto
             {
                 TraceId = Guid.Parse(spanDto.TraceId),
                 SpanId = Guid.Parse(spanDto.SpanId),
-                ParentSpanId = spanDto.ParentSpanId != null ? Guid.Parse(spanDto.ParentSpanId) : default(Guid?),
-                BeginTimestamp = new DateTimeOffset(DateTime.Parse(spanDto.BeginTimestamp)),
-                EndTimestamp = spanDto.EndTimestamp == null
-                    ? (DateTimeOffset?)null
-                    : new DateTimeOffset(DateTime.Parse(spanDto.EndTimestamp)),
-                Annotations = spanDto.Annotations.ToDictionary(pair => pair.Key, pair => (object)pair.Value)
+                ParentSpanId = spanDto.ParentSpanId == null ? default(Guid?) : Guid.Parse(spanDto.ParentSpanId),
+                BeginTimestamp = spanDto.BeginTimestamp,
+                EndTimestamp = spanDto.EndTimestamp == null ? (DateTimeOffset?)null : spanDto.EndTimestamp,
+                Annotations = spanDto.Annotations
             };
         }
     }
