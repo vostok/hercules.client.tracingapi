@@ -1,6 +1,6 @@
 # Vostok.Hercules.Client.TracingApi
 
-[![Build status](https://ci.appveyor.com/api/projects/status/github/vostok/hercules.client.tracingapi?svg=true&branch=master)](https://ci.appveyor.com/project/vostok/hercules.client.tracingapi/branch/master)
+[![Build & Test & Publish](https://github.com/vostok/hercules.client.tracingapi/actions/workflows/ci.yml/badge.svg)](https://github.com/vostok/hercules.client.tracingapi/actions/workflows/ci.yml)
 [![NuGet](https://img.shields.io/nuget/v/Vostok.Hercules.Client.TracingApi.svg)](https://www.nuget.org/packages/Vostok.Hercules.Client.TracingApi)
 
 Client for Hercules TracingAPI
