@@ -77,7 +77,7 @@
     </ItemGroup>
     <Delete Files="@(OldPubDirFiles)" />
   </Target>
-  <Target Name="Publishing" AfterTargets="CleanPublishDir" Condition="'$(Configuration)' != 'Publish'">
+  <Target Name="Publishing" AfterTargets="CleanPublishDir" Condition="'$(Configuration)' != 'Publish' And '$(TargetFramework)' != ''">
     <Exec WorkingDirectory="$(ProjectDir)" Command="dotnet publish -c Publish -f $(TargetFramework)" />
   </Target>
   <Target Name="RepackAssemblies" AfterTargets="Publishing" Condition="'$(Configuration)' != 'Publish'">
