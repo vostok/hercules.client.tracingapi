@@ -1,0 +1,59 @@
+static readonly Vostok.Hercules.Client.TracingApi.TracePagingState.Empty -> Vostok.Hercules.Client.TracingApi.TracePagingState
+static Vostok.Hercules.Client.TracingApi.HerculesTracingClientExtensions.Read(this Vostok.Hercules.Client.TracingApi.IHerculesTracingClient client, Vostok.Hercules.Client.TracingApi.TraceReadQuery query, System.TimeSpan timeout, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> Vostok.Hercules.Client.TracingApi.ReadTraceResult
+static Vostok.Hercules.Client.TracingApi.HerculesTracingClientExtensions.Scan(this Vostok.Hercules.Client.TracingApi.IHerculesTracingClient client, Vostok.Hercules.Client.TracingApi.TraceScanQuery query, System.TimeSpan perRequestTimeout, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Collections.Generic.IEnumerable<Vostok.Tracing.Abstractions.ISpan>
+static Vostok.Hercules.Client.TracingApi.HerculesTracingClientExtensions.ScanAsync(this Vostok.Hercules.Client.TracingApi.IHerculesTracingClient client, Vostok.Hercules.Client.TracingApi.TraceScanAsyncQuery query, System.TimeSpan perRequestTimeout, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IList<Vostok.Tracing.Abstractions.ISpan>>
+Vostok.Hercules.Client.TracingApi.HerculesTracingClient
+Vostok.Hercules.Client.TracingApi.HerculesTracingClient.HerculesTracingClient(Vostok.Hercules.Client.TracingApi.HerculesTracingClientSettings settings, Vostok.Logging.Abstractions.ILog log) -> void
+Vostok.Hercules.Client.TracingApi.HerculesTracingClient.ReadAsync(Vostok.Hercules.Client.TracingApi.TraceReadQuery query, System.TimeSpan timeout, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Vostok.Hercules.Client.TracingApi.ReadTraceResult>
+Vostok.Hercules.Client.TracingApi.HerculesTracingClientExtensions
+Vostok.Hercules.Client.TracingApi.HerculesTracingClientSettings
+Vostok.Hercules.Client.TracingApi.HerculesTracingClientSettings.AdditionalSetup.get -> Vostok.Clusterclient.Core.ClusterClientSetup
+Vostok.Hercules.Client.TracingApi.HerculesTracingClientSettings.AdditionalSetup.set -> void
+Vostok.Hercules.Client.TracingApi.HerculesTracingClientSettings.Cluster.get -> Vostok.Clusterclient.Core.Topology.IClusterProvider
+Vostok.Hercules.Client.TracingApi.HerculesTracingClientSettings.HerculesTracingClientSettings(Vostok.Clusterclient.Core.Topology.IClusterProvider cluster) -> void
+Vostok.Hercules.Client.TracingApi.HerculesTracingLegacyClient
+Vostok.Hercules.Client.TracingApi.HerculesTracingLegacyClient.GetTraceIdsAsync(string tracePrefix, System.TimeSpan timeout) -> System.Threading.Tasks.Task<Vostok.Hercules.Client.Abstractions.Results.HerculesResult<System.Collections.Generic.IList<System.Guid>>>
+Vostok.Hercules.Client.TracingApi.HerculesTracingLegacyClient.HerculesTracingLegacyClient(Vostok.Hercules.Client.TracingApi.HerculesTracingLegacyClientSettings settings, Vostok.Logging.Abstractions.ILog log) -> void
+Vostok.Hercules.Client.TracingApi.HerculesTracingLegacyClientSettings
+Vostok.Hercules.Client.TracingApi.HerculesTracingLegacyClientSettings.AdditionalSetup.get -> Vostok.Clusterclient.Core.ClusterClientSetup
+Vostok.Hercules.Client.TracingApi.HerculesTracingLegacyClientSettings.AdditionalSetup.set -> void
+Vostok.Hercules.Client.TracingApi.HerculesTracingLegacyClientSettings.Cluster.get -> Vostok.Clusterclient.Core.Topology.IClusterProvider
+Vostok.Hercules.Client.TracingApi.HerculesTracingLegacyClientSettings.HerculesTracingLegacyClientSettings(Vostok.Clusterclient.Core.Topology.IClusterProvider cluster) -> void
+Vostok.Hercules.Client.TracingApi.IHerculesTracingClient
+Vostok.Hercules.Client.TracingApi.IHerculesTracingClient.ReadAsync(Vostok.Hercules.Client.TracingApi.TraceReadQuery query, System.TimeSpan timeout, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Vostok.Hercules.Client.TracingApi.ReadTraceResult>
+Vostok.Hercules.Client.TracingApi.IHerculesTracingLegacyClient
+Vostok.Hercules.Client.TracingApi.IHerculesTracingLegacyClient.GetTraceIdsAsync(string tracePrefix, System.TimeSpan timeout) -> System.Threading.Tasks.Task<Vostok.Hercules.Client.Abstractions.Results.HerculesResult<System.Collections.Generic.IList<System.Guid>>>
+Vostok.Hercules.Client.TracingApi.ReadTracePayload
+Vostok.Hercules.Client.TracingApi.ReadTracePayload.Next.get -> Vostok.Hercules.Client.TracingApi.TracePagingState
+Vostok.Hercules.Client.TracingApi.ReadTracePayload.ReadTracePayload(System.Collections.Generic.IList<Vostok.Tracing.Abstractions.ISpan> spans, Vostok.Hercules.Client.TracingApi.TracePagingState next) -> void
+Vostok.Hercules.Client.TracingApi.ReadTracePayload.Spans.get -> System.Collections.Generic.IList<Vostok.Tracing.Abstractions.ISpan>
+Vostok.Hercules.Client.TracingApi.ReadTraceResult
+Vostok.Hercules.Client.TracingApi.ReadTraceResult.ReadTraceResult(Vostok.Hercules.Client.Abstractions.Results.HerculesStatus status, Vostok.Hercules.Client.TracingApi.ReadTracePayload payload, string errorDetails = null) -> void
+Vostok.Hercules.Client.TracingApi.TracePagingState
+Vostok.Hercules.Client.TracingApi.TracePagingState.State.get -> string
+Vostok.Hercules.Client.TracingApi.TracePagingState.TracePagingState(string state) -> void
+Vostok.Hercules.Client.TracingApi.TraceReadQuery
+Vostok.Hercules.Client.TracingApi.TraceReadQuery.Limit.get -> int?
+Vostok.Hercules.Client.TracingApi.TraceReadQuery.Limit.set -> void
+Vostok.Hercules.Client.TracingApi.TraceReadQuery.PagingState.get -> Vostok.Hercules.Client.TracingApi.TracePagingState
+Vostok.Hercules.Client.TracingApi.TraceReadQuery.PagingState.set -> void
+Vostok.Hercules.Client.TracingApi.TraceReadQuery.ParentSpanId.get -> System.Guid?
+Vostok.Hercules.Client.TracingApi.TraceReadQuery.ParentSpanId.set -> void
+Vostok.Hercules.Client.TracingApi.TraceReadQuery.TraceId.get -> System.Guid
+Vostok.Hercules.Client.TracingApi.TraceReadQuery.TraceId.set -> void
+Vostok.Hercules.Client.TracingApi.TraceReadQuery.TraceReadQuery(System.Guid traceId) -> void
+Vostok.Hercules.Client.TracingApi.TraceScanAsyncQuery
+Vostok.Hercules.Client.TracingApi.TraceScanAsyncQuery.BatchSize.get -> int
+Vostok.Hercules.Client.TracingApi.TraceScanAsyncQuery.Limit.get -> int
+Vostok.Hercules.Client.TracingApi.TraceScanAsyncQuery.ParentSpanId.get -> System.Guid?
+Vostok.Hercules.Client.TracingApi.TraceScanAsyncQuery.ParentSpanId.set -> void
+Vostok.Hercules.Client.TracingApi.TraceScanAsyncQuery.TraceId.get -> System.Guid
+Vostok.Hercules.Client.TracingApi.TraceScanAsyncQuery.TraceScanAsyncQuery(System.Guid traceId, int batchSize, int limit) -> void
+Vostok.Hercules.Client.TracingApi.TraceScanQuery
+Vostok.Hercules.Client.TracingApi.TraceScanQuery.BatchSize.get -> int
+Vostok.Hercules.Client.TracingApi.TraceScanQuery.BatchSize.set -> void
+Vostok.Hercules.Client.TracingApi.TraceScanQuery.ParentSpanId.get -> System.Guid?
+Vostok.Hercules.Client.TracingApi.TraceScanQuery.ParentSpanId.set -> void
+Vostok.Hercules.Client.TracingApi.TraceScanQuery.TraceId.get -> System.Guid
+Vostok.Hercules.Client.TracingApi.TraceScanQuery.TraceId.set -> void
+Vostok.Hercules.Client.TracingApi.TraceScanQuery.TraceScanQuery(System.Guid traceId, int batchSize) -> void
