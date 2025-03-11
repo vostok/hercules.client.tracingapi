@@ -7,6 +7,16 @@ notests *default:
 
   install:
     - Vostok.Hercules.Client.TracingApi/bin/Release/netstandard2.0/Vostok.Hercules.Client.TracingApi.dll
+    - groups:
+        - target-framework: "netstandard2.0"
+          libraries:
+            - Vostok.Hercules.Client.TracingApi/bin/Release/netstandard2.0/Vostok.Hercules.Client.TracingApi.dll
+        - target-framework: "net6.0"
+          libraries:
+            - Vostok.Hercules.Client.TracingApi/bin/Release/net6.0/Vostok.Hercules.Client.TracingApi.dll
+        - target-framework: "net8.0"
+          libraries:
+            - Vostok.Hercules.Client.TracingApi/bin/Release/net8.0/Vostok.Hercules.Client.TracingApi.dll
 
   deps:
     - vostok.commons.time
@@ -21,7 +31,20 @@ full-build > notests:
   deps:
     - -vostok.devtools
     - vostok.devtools@with-net6.0
-
+  
+  install:
+    - Vostok.Hercules.Client.TracingApi/bin/Release/netstandard2.0/Vostok.Hercules.Client.TracingApi.dll
+    - groups:
+        - target-framework: "netstandard2.0"
+          libraries:
+            - Vostok.Hercules.Client.TracingApi/bin/Release/netstandard2.0/Vostok.Hercules.Client.TracingApi.dll
+        - target-framework: "net6.0"
+          libraries:
+            - Vostok.Hercules.Client.TracingApi/bin/Release/net6.0/Vostok.Hercules.Client.TracingApi.dll
+        - target-framework: "net8.0"
+          libraries:
+            - Vostok.Hercules.Client.TracingApi/bin/Release/net8.0/Vostok.Hercules.Client.TracingApi.dll
+  
   build:
     target: Vostok.Hercules.Client.TracingApi.sln
     configuration: Release
