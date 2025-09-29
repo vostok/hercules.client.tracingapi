@@ -1,3 +1,7 @@
+## 0.0.5 (08-09-2025):
+
+Use System.Text.Json instead of Newtonsoft
+
 ## 0.0.4 (16-12-2024): 
 
 Bump NuGet deps versions

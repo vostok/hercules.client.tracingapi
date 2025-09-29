@@ -22,7 +22,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="..\..\vostok.commons.time\Vostok.Commons.Time\EpochHelper.cs" Link="Commons\EpochHelper.cs" />
-  </ItemGroup>  
+  </ItemGroup>
+  <ItemGroup>
+    <InternalsVisibleTo Include="Vostok.Hercules.Client.TracingApi.Tests"/>
+  </ItemGroup>
   <ItemGroup>
     <Reference Include="Vostok.ClusterClient.Core">
       <SpecificVersion>False</SpecificVersion>
@@ -44,20 +47,23 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\vostok.clusterclient.transport\Vostok.ClusterClient.Transport\bin\Release\$(ReferencesFramework)\Vostok.ClusterClient.Transport.dll</HintPath>
     </Reference>
-  </ItemGroup>
-
+  </ItemGroup>  
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" PrivateAssets="all" />
+    <!-- Not present in netstandard2.0 but built-in in other targets -->
+    <PackageReference Include="System.Text.Json" Version="9.0.8" Condition="'$(TargetFramework)' == 'netstandard2.0'" />
   </ItemGroup>
-
-  <Target Name="RepackAssemblies" AfterTargets="Build" Condition="'$(Configuration)' == 'Release' And '$(TargetFramework)' != ''">
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <Target Name="RepackAssemblies" AfterTargets="Build" Condition="'$(Configuration)' == 'Release' And '$(TargetFramework)' == 'netstandard2.0'">
     <PropertyGroup>
       <ILRepackExecutable>dotnet --roll-forward Major "$(MSBuildThisFileDirectory)../../vostok.devtools.ilrepack.bin/netcoreapp2.1/ILRepack.Core.dll"</ILRepackExecutable>
       <BinPath>$(ProjectDir)$(OutputPath)</BinPath>
       <ResultAssembly>$(BinPath)$(AssemblyName).dll</ResultAssembly>
     </PropertyGroup>
+    <!-- Needed for Cement users -->
     <ItemGroup>
-      <MergeAssemblies Include="$(BinPath)Newtonsoft.Json.dll" />
+      <MergeAssemblies Include="$(BinPath)System.Text.Json.dll" />
     </ItemGroup>
     <Exec WorkingDirectory="$(BinPath)" Command="$(ILRepackExecutable) /internalize /renameInternalized /out:$(ResultAssembly) $(ResultAssembly) @(MergeAssemblies->'%(RelativeDir)%(FileName)%(Extension)', ' ')" />
     <Delete Files="@(MergeAssemblies)" />
