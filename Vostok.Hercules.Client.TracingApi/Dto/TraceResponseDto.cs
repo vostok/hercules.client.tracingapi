@@ -1,13 +1,13 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace Vostok.Hercules.Client.TracingApi.Dto
 {
     internal class TraceResponseDto
     {
-        [JsonProperty("result")]
-        public SpanDto[] Result;
+        [JsonPropertyName("result")]
+        public SpanDto[] Result { get; set; }
 
-        [JsonProperty("pagingState")]
-        public string PagingState;
+        [JsonPropertyName("pagingState")]
+        public string PagingState { get; set; }
     }
 }

@@ -1,9 +1,9 @@
 using System;
 using System.Linq;
+using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
-using Newtonsoft.Json;
 using Vostok.Clusterclient.Core;
 using Vostok.Clusterclient.Core.Model;
 using Vostok.Clusterclient.Transport;
@@ -49,7 +49,7 @@ namespace Vostok.Hercules.Client.TracingApi
 
                 var payload = default(ReadTracePayload);
                 if (status == HerculesStatus.Success)
-                    payload = CreateReadTracePayload(JsonConvert.DeserializeObject<TraceResponseDto>(result.Response.Content.ToString()));
+                    payload = CreateReadTracePayload(JsonSerializer.Deserialize<TraceResponseDto>(result.Response.Content.ToArraySegment()));
 
                 return new ReadTraceResult(status, payload, errorMessage);
             }
@@ -60,7 +60,7 @@ namespace Vostok.Hercules.Client.TracingApi
             }
         }
 
-        private ReadTracePayload CreateReadTracePayload(TraceResponseDto responseDto)
+        private static ReadTracePayload CreateReadTracePayload(TraceResponseDto responseDto)
         {
             return new ReadTracePayload(responseDto.Result.Select(SpanDtoConverter.ConvertToSpan).ToList(), new TracePagingState(responseDto.PagingState));
         }

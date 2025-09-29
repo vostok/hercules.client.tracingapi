@@ -11,9 +11,9 @@ namespace Vostok.Hercules.Client.TracingApi.Dto
             {
                 TraceId = Guid.Parse(spanDto.TraceId),
                 SpanId = Guid.Parse(spanDto.SpanId),
-                ParentSpanId = spanDto.ParentSpanId == null ? default(Guid?) : Guid.Parse(spanDto.ParentSpanId),
+                ParentSpanId = spanDto.ParentSpanId == null ? null : Guid.Parse(spanDto.ParentSpanId),
                 BeginTimestamp = spanDto.BeginTimestamp,
-                EndTimestamp = spanDto.EndTimestamp == null ? (DateTimeOffset?)null : spanDto.EndTimestamp,
+                EndTimestamp = spanDto.EndTimestamp,
                 Annotations = spanDto.Annotations
             };
         }

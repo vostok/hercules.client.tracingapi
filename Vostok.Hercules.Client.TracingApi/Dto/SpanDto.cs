@@ -1,27 +1,27 @@
 using System;
 using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace Vostok.Hercules.Client.TracingApi.Dto
 {
     internal class SpanDto
     {
-        [JsonProperty("traceId")]
-        public string TraceId;
+        [JsonPropertyName("traceId")]
+        public string TraceId { get; set; }
 
-        [JsonProperty("spanId")]
-        public string SpanId;
+        [JsonPropertyName("spanId")]
+        public string SpanId { get; set; }
 
-        [JsonProperty("parentSpanId")]
-        public string ParentSpanId;
+        [JsonPropertyName("parentSpanId")]
+        public string ParentSpanId { get; set; }
 
-        [JsonProperty("beginTimestamp")]
-        public DateTimeOffset BeginTimestamp;
+        [JsonPropertyName("beginTimestamp")]
+        public DateTimeOffset BeginTimestamp { get; set; }
 
-        [JsonProperty("endTimestamp")]
-        public DateTimeOffset EndTimestamp;
+        [JsonPropertyName("endTimestamp")]
+        public DateTimeOffset EndTimestamp { get; set; }
 
-        [JsonProperty("annotations")]
-        public Dictionary<string, object> Annotations;
+        [JsonPropertyName("annotations")]
+        public Dictionary<string, object> Annotations { get; set; }
     }
 }
