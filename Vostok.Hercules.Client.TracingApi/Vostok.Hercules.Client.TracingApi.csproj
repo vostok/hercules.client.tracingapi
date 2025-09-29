@@ -7,7 +7,7 @@
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
   <PropertyGroup>
-    <VersionPrefix>0.0.5</VersionPrefix>
+    <VersionPrefix>0.0.6</VersionPrefix>
   </PropertyGroup>
   <PropertyGroup>
     <Title>Vostok.Hercules.Client.TracingApi</Title>
@@ -24,7 +24,7 @@
     <Compile Include="..\..\vostok.commons.time\Vostok.Commons.Time\EpochHelper.cs" Link="Commons\EpochHelper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <InternalsVisibleTo Include="Vostok.Hercules.Client.TracingApi.Tests"/>
+    <InternalsVisibleTo Include="Vostok.Hercules.Client.TracingApi.Tests" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Vostok.ClusterClient.Core">
